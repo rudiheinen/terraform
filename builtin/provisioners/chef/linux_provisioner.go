@@ -20,13 +20,13 @@ func (p *Provisioner) linuxInstallChefClient(
 	// Build up the command prefix
 	prefix := ""
 	if p.HTTPProxy != "" {
-		prefix += fmt.Sprintf("http_proxy='%s' && ", p.HTTPProxy)
+		prefix += fmt.Sprintf("http_proxy='%s' ", p.HTTPProxy)
 	}
 	if p.HTTPSProxy != "" {
-		prefix += fmt.Sprintf("https_proxy='%s' && ", p.HTTPSProxy)
+		prefix += fmt.Sprintf("https_proxy='%s' ", p.HTTPSProxy)
         }
 	if p.NOProxy != nil {
-		prefix += fmt.Sprintf("no_proxy='%s' && ", strings.Join(p.NOProxy, ","))
+		prefix += fmt.Sprintf("no_proxy='%s' ", strings.Join(p.NOProxy, ","))
 	}
 
 	// First download the install.sh script from Chef

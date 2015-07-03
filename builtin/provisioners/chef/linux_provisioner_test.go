@@ -58,9 +58,9 @@ func TestResourceProvider_linuxInstallChefClient(t *testing.T) {
 			}),
 
 			Commands: map[string]bool{
-				"http_proxy='http://proxy.local' && curl -LO https://www.chef.io/chef/install.sh": true,
-				"http_proxy='http://proxy.local' && bash ./install.sh -v \"\"":                    true,
-				"http_proxy='http://proxy.local' && rm -f install.sh":                             true,
+				"http_proxy='http://proxy.local' curl -LO https://www.chef.io/chef/install.sh": true,
+				"http_proxy='http://proxy.local' bash ./install.sh -v \"\"":                    true,
+				"http_proxy='http://proxy.local' rm -f install.sh":                             true,
 			},
 		},
 
@@ -76,9 +76,9 @@ func TestResourceProvider_linuxInstallChefClient(t *testing.T) {
 			}),
 
 			Commands: map[string]bool{
-				"https_proxy='http://proxy.local' && curl -LO https://www.chef.io/chef/install.sh": true,
-				"https_proxy='http://proxy.local' && bash ./install.sh -v \"\"":                    true,
-				"https_proxy='http://proxy.local' && rm -f install.sh":                             true,
+				"https_proxy='http://proxy.local' curl -LO https://www.chef.io/chef/install.sh": true,
+				"https_proxy='http://proxy.local' bash ./install.sh -v \"\"":                    true,
+				"https_proxy='http://proxy.local' rm -f install.sh":                             true,
 			},
 		},
 
@@ -95,11 +95,11 @@ func TestResourceProvider_linuxInstallChefClient(t *testing.T) {
 			}),
 
 			Commands: map[string]bool{
-				"http_proxy='http://proxy.local' && no_proxy='http://local.local,http://local.org' && " +
+				"http_proxy='http://proxy.local' no_proxy='http://local.local,http://local.org' " +
 					"curl -LO https://www.chef.io/chef/install.sh": true,
-				"http_proxy='http://proxy.local' && no_proxy='http://local.local,http://local.org' && " +
+				"http_proxy='http://proxy.local' no_proxy='http://local.local,http://local.org' " +
 					"bash ./install.sh -v \"\"": true,
-				"http_proxy='http://proxy.local' && no_proxy='http://local.local,http://local.org' && " +
+				"http_proxy='http://proxy.local' no_proxy='http://local.local,http://local.org' " +
 					"rm -f install.sh": true,
 			},
 		},
